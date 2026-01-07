@@ -53,6 +53,3 @@ func _ready() -> void:
 	client.config = config
 
 	client.start()
-```
-
----
