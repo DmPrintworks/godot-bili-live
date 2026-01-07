@@ -1,11 +1,15 @@
 # Godot 4+ specific ignores
 .godot/
-.nomedia
 
 # Godot-specific ignores
 .import/
 export.cfg
-export_credentials.cfg
+export_presets.cfg
+
+# Ignore all addons except bili_live
+addons/*
+!addons/bili_live/
+!addons/bili_live/**
 
 # Imported translations (automatically generated from CSV files)
 *.translation
@@ -14,3 +18,12 @@ export_credentials.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# General
+*.log
+*.tmp

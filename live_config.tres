@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="BiliLiveConfig" load_steps=2 format=3 uid="uid://dk8c6bpqcyygi"]
+
+[ext_resource type="Script" uid="uid://b08t3uisw36sy" path="res://addons/bili_live/core/BiliLiveConfig.gd" id="1_t5xpy"]
+
+[resource]
+script = ExtResource("1_t5xpy")
+metadata/_custom_type_script = "uid://b08t3uisw36sy"
