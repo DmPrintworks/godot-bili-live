@@ -1,4 +1,4 @@
-# BiliLive for Godot4.x
+# Bilibili Live for Godot4.x
 
 专为 Godot 开发的 Bilibili 直播「互动玩法」插件。支持长连接心跳维持与弹幕、礼物、交互数据的实时接收。
 
@@ -22,7 +22,7 @@
 - **signal live_live_end(data: BiliLiveLiveEnd)**：该直播间停止直播时触发
 - **signal live_interaction_end(data: BiliLiveInteractionEnd)**：当目前长连接停止推送时触发
 
-参考[长链命令说明](https://open-live.bilibili.com/document/f9ce25be-312e-1f4a-85fd-fef21f1637f8)
+参考：[长链命令说明](https://open-live.bilibili.com/document/f9ce25be-312e-1f4a-85fd-fef21f1637f8)
 
 ## 安装
 
@@ -53,3 +53,4 @@ func _ready() -> void:
 	client.config = config
 
 	client.start()
+```

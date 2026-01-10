@@ -35,7 +35,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
-text = " 请先在 live_config.tres 文件配置身份信息后再点击 Start 进行连接"
+text = " 请先在 live_config.tres 文件填写身份信息后再点击 Start 进行连接"
 label_settings = SubResource("LabelSettings_u44n3")
 vertical_alignment = 1
 
