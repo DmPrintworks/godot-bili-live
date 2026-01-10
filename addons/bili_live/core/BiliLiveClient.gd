@@ -300,27 +300,27 @@ func _dispatch_event(json: Dictionary) -> void:
 	emit_signal("live_data", json)
 
 	match cmd:
-		"LIVE_OPEN_PLATFORM_DM":
+		BiliLiveCmd.DM:
 			emit_signal("live_dm", BiliLiveDm.from_dict(data))
-		"LIVE_OPEN_PLATFORM_DM_MIRROR":
+		BiliLiveCmd.DM_MIRROR:
 			emit_signal("live_dm_mirror", BiliLiveDmMirror.from_dict(data))
-		"LIVE_OPEN_PLATFORM_SEND_GIFT":
+		BiliLiveCmd.SEND_GIFT:
 			emit_signal("live_send_gift", BiliLiveSendGift.from_dict(data))
-		"LIVE_OPEN_PLATFORM_SUPER_CHAT":
+		BiliLiveCmd.SUPER_CHAT:
 			emit_signal("live_super_chat", BiliLiveSuperChat.from_dict(data))
-		"LIVE_OPEN_PLATFORM_SUPER_CHAT_DEL":
+		BiliLiveCmd.SUPER_CHAT_DEL:
 			emit_signal("live_super_chat_del", BiliLiveSuperChatDel.from_dict(data))
-		"LIVE_OPEN_PLATFORM_GUARD":
+		BiliLiveCmd.GUARD:
 			emit_signal("live_guard", BiliLiveGuard.from_dict(data))
-		"LIVE_OPEN_PLATFORM_LIKE":
+		BiliLiveCmd.LIKE:
 			emit_signal("live_like", BiliLiveLike.from_dict(data))
-		"LIVE_OPEN_PLATFORM_LIVE_ROOM_ENTER":
+		BiliLiveCmd.ROOM_ENTER:
 			emit_signal("live_room_enter", BiliLiveRoomEnter.from_dict(data))
-		"LIVE_OPEN_PLATFORM_LIVE_START":
+		BiliLiveCmd.LIVE_START:
 			emit_signal("live_live_start", BiliLiveLiveStart.from_dict(data))
-		"LIVE_OPEN_PLATFORM_LIVE_END":
+		BiliLiveCmd.LIVE_END:
 			emit_signal("live_live_end", BiliLiveLiveEnd.from_dict(data))
-		"LIVE_OPEN_PLATFORM_INTERACTION_END":
+		BiliLiveCmd.INTERACTION_END:
 			emit_signal("live_interaction_end", BiliLiveInteractionEnd.from_dict(data))
 
 
