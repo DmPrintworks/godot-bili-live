@@ -5,7 +5,7 @@
 ## 特性
 
 - **极简接入**：基于 Node 节点和 Resource 配置，几行代码即可开启直播互动。
-- **强类型实体**：所有数据（弹幕、礼物、上舰等）均封装为完善的实体类，无需解析 `Dictionary`，支持代码补全。
+- **强类型实体**：所有数据（弹幕、礼物、上舰等）均封装为完善的实体类，无需解析 `Dictionary`，方便进行代码补全。
 - **完善的注释**：每一个信号、属性、方法均附带详细的中文注释与类型定义，编辑器内即刻查阅。
 
 ## 信号
@@ -54,3 +54,7 @@ func _ready() -> void:
 
 	client.start()
 ```
+
+## 视频教程
+[p1 快速使用](https://www.bilibili.com/video/BV1FT6dBtEff)
+[p2 补充说明](https://www.bilibili.com/video/BV1FT6dBtEff?p=2)
