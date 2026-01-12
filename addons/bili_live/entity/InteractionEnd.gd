@@ -8,8 +8,17 @@ var game_id: String = ""
 var timestamp: int = 0
 
 
+## 从字典反序列化创建实例
 static func from_dict(data: Dictionary) -> BiliLiveInteractionEnd:
 	var instance := BiliLiveInteractionEnd.new()
 	instance.game_id = data.get("game_id", "")
 	instance.timestamp = data.get("timestamp", 0)
 	return instance
+
+
+## 序列化为字典
+func to_dict() -> Dictionary:
+	return {
+		"game_id": game_id,
+		"timestamp": timestamp,
+	}

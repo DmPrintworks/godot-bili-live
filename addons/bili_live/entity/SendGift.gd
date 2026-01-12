@@ -43,13 +43,14 @@ var gift_icon: String = ""
 ## 是否是combo道具
 var combo_gift: bool = false
 ## 主播信息
-var anchor_info: AnchorInfo = null
+var anchor_info: BiliLiveSendGift.AnchorInfo = null
 ## 连击信息
-var combo_info: ComboInfo = null
+var combo_info: BiliLiveSendGift.ComboInfo = null
 ## 盲盒信息
-var blind_gift: BlindGift = null
+var blind_gift: BiliLiveSendGift.BlindGift = null
 
 
+## 从字典反序列化创建实例
 static func from_dict(data: Dictionary) -> BiliLiveSendGift:
 	var instance := BiliLiveSendGift.new()
 	instance.room_id = data.get("room_id", 0)
@@ -74,17 +75,50 @@ static func from_dict(data: Dictionary) -> BiliLiveSendGift:
 
 	var anchor_dict := data.get("anchor_info", null)
 	if anchor_dict is Dictionary:
-		instance.anchor_info = AnchorInfo.from_dict(anchor_dict)
+		instance.anchor_info = BiliLiveSendGift.AnchorInfo.from_dict(anchor_dict)
 
 	var combo_dict := data.get("combo_info", null)
 	if combo_dict is Dictionary:
-		instance.combo_info = ComboInfo.from_dict(combo_dict)
+		instance.combo_info = BiliLiveSendGift.ComboInfo.from_dict(combo_dict)
 
 	var blind_dict := data.get("blind_gift", null)
 	if blind_dict is Dictionary:
-		instance.blind_gift = BlindGift.from_dict(blind_dict)
+		instance.blind_gift = BiliLiveSendGift.BlindGift.from_dict(blind_dict)
 
 	return instance
+
+
+## 序列化为字典
+func to_dict() -> Dictionary:
+	var dict := {
+		"room_id": room_id,
+		"uid": uid,
+		"open_id": open_id,
+		"union_id": union_id,
+		"uname": uname,
+		"uface": uface,
+		"gift_id": gift_id,
+		"gift_name": gift_name,
+		"gift_num": gift_num,
+		"price": price,
+		"r_price": r_price,
+		"paid": paid,
+		"fans_medal_level": fans_medal_level,
+		"fans_medal_name": fans_medal_name,
+		"fans_medal_wearing_status": fans_medal_wearing_status,
+		"guard_level": guard_level,
+		"timestamp": timestamp,
+		"msg_id": msg_id,
+		"gift_icon": gift_icon,
+		"combo_gift": combo_gift,
+	}
+	if anchor_info:
+		dict["anchor_info"] = anchor_info.to_dict()
+	if combo_info:
+		dict["combo_info"] = combo_info.to_dict()
+	if blind_gift:
+		dict["blind_gift"] = blind_gift.to_dict()
+	return dict
 
 
 ## 主播信息
@@ -101,6 +135,7 @@ class AnchorInfo:
 	## 收礼主播头像
 	var uface: String = ""
 
+	## 从字典反序列化创建实例
 	static func from_dict(data: Dictionary) -> AnchorInfo:
 		var instance := AnchorInfo.new()
 		instance.uid = data.get("uid", 0)
@@ -109,6 +144,16 @@ class AnchorInfo:
 		instance.uname = data.get("uname", "")
 		instance.uface = data.get("uface", "")
 		return instance
+
+	## 序列化为字典
+	func to_dict() -> Dictionary:
+		return {
+			"uid": uid,
+			"open_id": open_id,
+			"union_id": union_id,
+			"uname": uname,
+			"uface": uface,
+		}
 
 
 ## 连击信息
@@ -123,6 +168,7 @@ class ComboInfo:
 	## 连击有效期秒
 	var combo_timeout: int = 0
 
+	## 从字典反序列化创建实例
 	static func from_dict(data: Dictionary) -> ComboInfo:
 		var instance := ComboInfo.new()
 		instance.combo_base_num = data.get("combo_base_num", 0)
@@ -130,6 +176,15 @@ class ComboInfo:
 		instance.combo_id = data.get("combo_id", "")
 		instance.combo_timeout = data.get("combo_timeout", 0)
 		return instance
+
+	## 序列化为字典
+	func to_dict() -> Dictionary:
+		return {
+			"combo_base_num": combo_base_num,
+			"combo_count": combo_count,
+			"combo_id": combo_id,
+			"combo_timeout": combo_timeout,
+		}
 
 
 ## 盲盒信息
@@ -140,8 +195,16 @@ class BlindGift:
 	## 是否是盲盒
 	var status: bool = false
 
+	## 从字典反序列化创建实例
 	static func from_dict(data: Dictionary) -> BlindGift:
 		var instance := BlindGift.new()
 		instance.blind_gift_id = data.get("blind_gift_id", 0)
 		instance.status = data.get("status", false)
 		return instance
+
+	## 序列化为字典
+	func to_dict() -> Dictionary:
+		return {
+			"blind_gift_id": blind_gift_id,
+			"status": status,
+		}

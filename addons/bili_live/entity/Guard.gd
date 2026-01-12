@@ -6,7 +6,7 @@ extends RefCounted
 var guard_level: int = 0
 ## 大航海数量
 var guard_num: int = 0
-## 大航海单位(正常单位为“月”，如为其他内容，无视 guard_num 以本字段内容为准，例如 *3天 )
+## 大航海单位(正常单位为"月"，如为其他内容，无视 guard_num 以本字段内容为准，例如 *3天 )
 var guard_unit: String = ""
 ## 大航海金瓜子
 var price: int = 0
@@ -23,7 +23,7 @@ var room_id: int = 0
 ## 消息唯一id
 var msg_id: String = ""
 ## 用户信息
-var user_info: UserInfo = null
+var user_info: BiliLiveGuard.UserInfo = null
 
 
 static func from_dict(data: Dictionary) -> BiliLiveGuard:
@@ -42,8 +42,27 @@ static func from_dict(data: Dictionary) -> BiliLiveGuard:
 	return instance
 
 
+func to_dict() -> Dictionary:
+	var dict := {
+		"guard_level": guard_level,
+		"guard_num": guard_num,
+		"guard_unit": guard_unit,
+		"price": price,
+		"fans_medal_level": fans_medal_level,
+		"fans_medal_name": fans_medal_name,
+		"fans_medal_wearing_status": fans_medal_wearing_status,
+		"timestamp": timestamp,
+		"room_id": room_id,
+		"msg_id": msg_id,
+	}
+	if user_info:
+		dict["user_info"] = user_info.to_dict()
+	return dict
+
+
 ## 用户信息
 class UserInfo:
+	extends RefCounted
 	## 用户UID（已废弃，固定为0）
 	var uid: int = 0
 	## 用户唯一标识
@@ -63,3 +82,12 @@ class UserInfo:
 		instance.uname = data.get("uname", "")
 		instance.uface = data.get("uface", "")
 		return instance
+
+	func to_dict() -> Dictionary:
+		return {
+			"uid": uid,
+			"open_id": open_id,
+			"union_id": union_id,
+			"uname": uname,
+			"uface": uface,
+		}

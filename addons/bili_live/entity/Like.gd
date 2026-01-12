@@ -14,7 +14,7 @@ var union_id: String = ""
 var uface: String = ""
 ## 时间秒级时间戳
 var timestamp: int = 0
-## 点赞文案( “xxx点赞了”)
+## 点赞文案( "xxx点赞了")
 var like_text: String = ""
 ## 对单个用户最近2秒的点赞次数聚合
 var like_count: int = 0
@@ -30,6 +30,7 @@ var msg_id: String = ""
 var room_id: int = 0
 
 
+## 从字典反序列化创建实例
 static func from_dict(data: Dictionary) -> BiliLiveLike:
 	var instance := BiliLiveLike.new()
 	instance.uname = data.get("uname", "")
@@ -46,3 +47,22 @@ static func from_dict(data: Dictionary) -> BiliLiveLike:
 	instance.msg_id = data.get("msg_id", "")
 	instance.room_id = data.get("room_id", 0)
 	return instance
+
+
+## 序列化为字典
+func to_dict() -> Dictionary:
+	return {
+		"uname": uname,
+		"uid": uid,
+		"open_id": open_id,
+		"union_id": union_id,
+		"uface": uface,
+		"timestamp": timestamp,
+		"like_text": like_text,
+		"like_count": like_count,
+		"fans_medal_wearing_status": fans_medal_wearing_status,
+		"fans_medal_name": fans_medal_name,
+		"fans_medal_level": fans_medal_level,
+		"msg_id": msg_id,
+		"room_id": room_id,
+	}

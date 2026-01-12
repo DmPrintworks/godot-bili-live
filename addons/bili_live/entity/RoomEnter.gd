@@ -16,6 +16,7 @@ var union_id: String = ""
 var timestamp: int = 0
 
 
+## 从字典反序列化创建实例
 static func from_dict(data: Dictionary) -> BiliLiveRoomEnter:
 	var instance := BiliLiveRoomEnter.new()
 	instance.room_id = data.get("room_id", 0)
@@ -25,3 +26,15 @@ static func from_dict(data: Dictionary) -> BiliLiveRoomEnter:
 	instance.union_id = data.get("union_id", "")
 	instance.timestamp = data.get("timestamp", 0)
 	return instance
+
+
+## 序列化为字典
+func to_dict() -> Dictionary:
+	return {
+		"room_id": room_id,
+		"uface": uface,
+		"uname": uname,
+		"open_id": open_id,
+		"union_id": union_id,
+		"timestamp": timestamp,
+	}

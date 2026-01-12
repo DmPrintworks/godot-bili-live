@@ -42,6 +42,7 @@ var reply_uname: String = ""
 var is_admin: int = 0
 
 
+## 从字典反序列化创建实例
 static func from_dict(data: Dictionary) -> BiliLiveDm:
 	var instance := BiliLiveDm.new()
 	instance.room_id = data.get("room_id", 0)
@@ -64,3 +65,28 @@ static func from_dict(data: Dictionary) -> BiliLiveDm:
 	instance.reply_uname = data.get("reply_uname", "")
 	instance.is_admin = data.get("is_admin", 0)
 	return instance
+
+
+## 序列化为字典
+func to_dict() -> Dictionary:
+	return {
+		"room_id": room_id,
+		"uid": uid,
+		"open_id": open_id,
+		"union_id": union_id,
+		"uname": uname,
+		"msg": msg,
+		"msg_id": msg_id,
+		"fans_medal_level": fans_medal_level,
+		"fans_medal_name": fans_medal_name,
+		"fans_medal_wearing_status": fans_medal_wearing_status,
+		"guard_level": guard_level,
+		"timestamp": timestamp,
+		"uface": uface,
+		"emoji_img_url": emoji_img_url,
+		"dm_type": dm_type,
+		"glory_level": glory_level,
+		"reply_open_id": reply_open_id,
+		"reply_uname": reply_uname,
+		"is_admin": is_admin,
+	}

@@ -38,6 +38,7 @@ var fans_medal_name: String = ""
 var fans_medal_wearing_status: bool = false
 
 
+## 从字典反序列化创建实例
 static func from_dict(data: Dictionary) -> BiliLiveSuperChat:
 	var instance := BiliLiveSuperChat.new()
 	instance.room_id = data.get("room_id", 0)
@@ -58,3 +59,26 @@ static func from_dict(data: Dictionary) -> BiliLiveSuperChat:
 	instance.fans_medal_name = data.get("fans_medal_name", "")
 	instance.fans_medal_wearing_status = data.get("fans_medal_wearing_status", false)
 	return instance
+
+
+## 序列化为字典
+func to_dict() -> Dictionary:
+	return {
+		"room_id": room_id,
+		"uid": uid,
+		"open_id": open_id,
+		"union_id": union_id,
+		"uname": uname,
+		"uface": uface,
+		"message_id": message_id,
+		"message": message,
+		"msg_id": msg_id,
+		"rmb": rmb,
+		"timestamp": timestamp,
+		"start_time": start_time,
+		"end_time": end_time,
+		"guard_level": guard_level,
+		"fans_medal_level": fans_medal_level,
+		"fans_medal_name": fans_medal_name,
+		"fans_medal_wearing_status": fans_medal_wearing_status,
+	}

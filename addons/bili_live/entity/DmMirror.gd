@@ -16,6 +16,7 @@ var emoji_img_url: String = ""
 var dm_type: int = 0
 
 
+## 从字典反序列化创建实例
 static func from_dict(data: Dictionary) -> BiliLiveDmMirror:
 	var instance := BiliLiveDmMirror.new()
 	instance.room_id = data.get("room_id", 0)
@@ -25,3 +26,15 @@ static func from_dict(data: Dictionary) -> BiliLiveDmMirror:
 	instance.emoji_img_url = data.get("emoji_img_url", "")
 	instance.dm_type = data.get("dm_type", 0)
 	return instance
+
+
+## 序列化为字典
+func to_dict() -> Dictionary:
+	return {
+		"room_id": room_id,
+		"msg": msg,
+		"msg_id": msg_id,
+		"timestamp": timestamp,
+		"emoji_img_url": emoji_img_url,
+		"dm_type": dm_type,
+	}
