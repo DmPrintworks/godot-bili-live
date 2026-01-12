@@ -52,7 +52,6 @@ var _crypto := Crypto.new()
 var _ws_heartbeat_timer: float = 0.0
 var _app_heartbeat_timer: float = 0.0
 
-## 错误码映射表，文档地址：https://open-live.bilibili.com/document/74eec767-e594-7ddd-6aba-257e8317c05d
 const _ERROR_MAP = {
 	4000: "参数错误：请检查必填参数，参数大小限制",
 	4001: "应用无效：请检查header的x-bili-accesskeyid是否为空，或者有效",
