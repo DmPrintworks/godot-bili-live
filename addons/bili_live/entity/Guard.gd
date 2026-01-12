@@ -23,7 +23,7 @@ var room_id: int = 0
 ## 消息唯一id
 var msg_id: String = ""
 ## 用户信息
-var user_infoa: UserInfo = null
+var user_info: UserInfo = null
 
 
 static func from_dict(data: Dictionary) -> BiliLiveGuard:
