@@ -53,7 +53,7 @@ var _ws_heartbeat_timer: float = 0.0
 var _app_heartbeat_timer: float = 0.0
 
 ## 错误码映射表，文档地址：https://open-live.bilibili.com/document/74eec767-e594-7ddd-6aba-257e8317c05d
-const ERROR_MAP = {
+const _ERROR_MAP = {
 	4000: "参数错误：请检查必填参数，参数大小限制",
 	4001: "应用无效：请检查header的x-bili-accesskeyid是否为空，或者有效",
 	4002: "签名异常：请检查header的Authorization",
@@ -142,12 +142,14 @@ func _process(delta: float) -> void:
 			_app_heartbeat_timer = config.app_heartbeat_interval
 
 
+## 开启连接
 func start() -> void:
 	if _verify_identity():
 		var data := await _app_start()
 		_ws_start(data)
 
 
+## 主动关闭连接
 func stop() -> void:
 	_app_end()
 	_ws_end()
@@ -155,7 +157,7 @@ func stop() -> void:
 
 ## 获取可读的错误请求说明信息
 static func get_error_detaile(code: int) -> String:
-	return ERROR_MAP.get(code, "未知API错误 (Code: %d)" % code)
+	return _ERROR_MAP.get(code, "未知API错误 (Code: %d)" % code)
 
 
 func _verify_identity() -> bool:

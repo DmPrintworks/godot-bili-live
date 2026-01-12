@@ -90,13 +90,11 @@ static func unpack(data: PackedByteArray) -> Array[Packet]:
 		# 4. 根据版本处理递归或解析
 		match ver:
 			VER_ZLIB:
-				# -1 代表不限制解压后的大小，Godot 会自动分配
 				var decompressed := body.decompress_dynamic(-1, FileAccess.COMPRESSION_DEFLATE)
 				if not decompressed.is_empty():
-					# 解析解压后的二进制流
 					packets.append_array(unpack(decompressed))
 				else:
-					printerr("[BiliProto] Zlib 解压失败")
+					printerr("[BiliProto] Zlib 解压失败: op=%d, body_size=%d" % [op, body.size()])
 			_:
 				# 标准包解析 (Version 0)
 				var p := Packet.new()
